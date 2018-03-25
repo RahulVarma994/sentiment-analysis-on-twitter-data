@@ -149,7 +149,10 @@ words$score=calculate_score(words$words)
 words=words[-1,]
 words=words %>% mutate(sentiment=if_else(score<0,"negative"," "))
 words=words %>% filter(sentiment=="negative")
+
+```
+
+```{r}
 #Search for negative words in the tweets and display the frequency of those words in a simple bar chart
 words %>% head(10) %>% ggplot(aes(x=reorder(words,-freq),y=freq,fill=-freq))+geom_bar(stat = "identity")
 ```
-
